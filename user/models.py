@@ -16,7 +16,7 @@ class User(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
     slug = models.SlugField(unique=True,blank=True)
-    group = models.ForeignKey(Group,on_delete=models.CASCADE)
+    group = models.ForeignKey(Group,on_delete=models.CASCADE,null=True)
 
     def __str__(self):
         return f'{self.name} {self.family}'
