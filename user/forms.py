@@ -4,7 +4,7 @@ from .models import User
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name','family','userName','email','password']
+        fields = ['name','family','userName','email','password','profile']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',

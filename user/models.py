@@ -20,6 +20,7 @@ class User(models.Model):
     group = models.ForeignKey(Group,on_delete=models.CASCADE,null=True)
     is_active = models.BooleanField(default=True)
     userType = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(3)],default=1)
+    profile = models.ImageField(upload_to='profile',blank=True)
 
     def __str__(self):
         return f'{self.name} {self.family}'
