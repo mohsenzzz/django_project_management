@@ -2,6 +2,7 @@ from audioop import reverse
 
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import MinValueValidator,MaxValueValidator
 from sqlparse.engine.grouping import group
 
 from group.models import Group
@@ -17,6 +18,8 @@ class User(models.Model):
     password = models.CharField(max_length=100)
     slug = models.SlugField(unique=True,blank=True)
     group = models.ForeignKey(Group,on_delete=models.CASCADE,null=True)
+    is_active = models.BooleanField(default=True)
+    userType = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(3)],default=1)
 
     def __str__(self):
         return f'{self.name} {self.family}'

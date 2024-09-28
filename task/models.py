@@ -1,6 +1,6 @@
 from audioop import reverse
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
+# from dateutil.relativedelta import relativedelta
 
 from django.db import models
 from user.models import User
@@ -12,7 +12,7 @@ class Task(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='creator')
     asigned_to = models.ManyToManyField(User,related_name='asigned')
-    expire_time = models.DateTimeField(default=datetime.now() + relativedelta(year=1),
+    expire_time = models.DateTimeField(default=datetime.now() ,
                                        null=True, blank=True)
 
     def __str__(self):
