@@ -4,17 +4,17 @@ from .models import User
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name','family','userName','email','password','profile']
+        fields = ['first_name','last_name','username','email','password','profile']
         widgets = {
-            'name': forms.TextInput(attrs={
+            'first_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Name',
             }),
-            'family': forms.TextInput(attrs={
+            'last_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Family',
             }),
-            'userName': forms.TextInput(attrs={
+            'username': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'UserName',
             }),
@@ -30,7 +30,7 @@ class RegisterForm(forms.ModelForm):
         }
         error_messages={
 
-            'userName': {
+            'username': {
                 'required': 'This field is required.',
             },
             'password': {
@@ -45,9 +45,9 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['userName','password']
+        fields = ['username','password']
         widgets = {
-            'userName': forms.TextInput(attrs={
+            'username': forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'UserName',
             }),
@@ -57,7 +57,7 @@ class LoginForm(forms.ModelForm):
             })
         }
         error_messages={
-            'userName': {
+            'username': {
                 'required': 'This field is required.',
             },
             'password': {

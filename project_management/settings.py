@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL
+from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL, STATICFILES_DIRS, AUTH_USER_MODEL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,7 +87,7 @@ DATABASES = {
     }
 }
 
-
+AUTH_USER_MODEL ='user.User'
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -126,6 +126,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # MEDIA_URL = "/media/"
 
 STATIC_URL = "static/"
+# STATICFILES_DIRS = BASE_DIR / "static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

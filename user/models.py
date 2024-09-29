@@ -1,5 +1,6 @@
 from audioop import reverse
 
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator,MaxValueValidator
@@ -10,24 +11,18 @@ from group.models import Group
 
 # Create your models here.
 
-class User(models.Model):
-    name = models.CharField(max_length=100)
-    family= models.CharField(max_length=100)
-    userName = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True,blank=True)
-    group = models.ForeignKey(Group,on_delete=models.CASCADE,null=True)
-    is_active = models.BooleanField(default=True)
-    userType = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(3)],default=1)
-    profile = models.ImageField(upload_to='profile',blank=True)
-
+class User(AbstractUser):
+    email_active_code = models.CharField(max_length=100, unique=True,null=True,blank=True)
+    group = models.ForeignKey(Group,on_delete=models.CASCADE,null=True,related_name='user_groups')
+    profile = models.ImageField(upload_to='profile',blank=True,null=True)
+    class Meta:
+        db_table = 'user'
     def __str__(self):
-        return f'{self.name} {self.family}'
+        return f'{self.first_name} {self.last_name}'
 
     def get_absolute_url(self):
-        return reverse('user_profile', slug=[self.slug])
+        return reverse('user_profile', slug=[self.id])
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(User, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.slug = slugify(self.name)
+    #     super(User, self).save(*args, **kwargs)
