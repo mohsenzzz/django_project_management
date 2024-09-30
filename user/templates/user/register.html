@@ -15,18 +15,18 @@
                      </div>
 
                     <div class="col-md-12 form-group {% if register_form.name.errors %} text-danger {% endif %}">
-                     {{ register_form.name }}
-                     {{ register_form.name.errors }}
+                     {{ register_form.first_name }}
+                     {{ register_form.first_name.errors }}
                      </div>
 
                     <div class="col-md-12 form-group mt-2 {% if register_form.family.errors %} text-danger {% endif %}">
-                     {{ register_form.family }}
-                     {{ register_form.family.errors }}
+                     {{ register_form.last_name }}
+                     {{ register_form.last_name.errors }}
                     </div>
 
                     <div class="col-md-12 form-group mt-2 {% if register_form.userName.errors %} text-danger {% endif %}">
-                     {{ register_form.userName }}
-                     {{ register_form.userName.errors }}
+                     {{ register_form.username }}
+                     {{ register_form.username.errors }}
                     </div>
 
                     <div class="col-md-12 form-group mt-2 {% if register_form.password.errors %} text-danger {% endif %}">

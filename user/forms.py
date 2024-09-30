@@ -42,25 +42,33 @@ class RegisterForm(forms.ModelForm):
 
         }
 
-class LoginForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username','password']
-        widgets = {
-            'username': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'UserName',
-            }),
-            'password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Password',
-            })
-        }
-        error_messages={
-            'username': {
-                'required': 'This field is required.',
-            },
-            'password': {
-                'required': 'This field is required.',
-            }
-        }
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Username',
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+    }))
+    # class Meta:
+    #     model = User
+    #     fields = ['username','password']
+    #     widgets = {
+    #         'username': forms.TextInput(attrs={
+    #             'class': 'form-control',
+    #             'placeholder': 'UserName',
+    #         }),
+    #         'password': forms.PasswordInput(attrs={
+    #             'class': 'form-control',
+    #             'placeholder': 'Password',
+    #         })
+    #     }
+    #     error_messages={
+    #         'username': {
+    #             'required': 'This field is required.',
+    #         },
+    #         'password': {
+    #             'required': 'This field is required.',
+    #         }
+    #     }
