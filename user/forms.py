@@ -1,3 +1,5 @@
+from cProfile import label
+
 from django import forms
 from .models import User
 
@@ -72,3 +74,20 @@ class LoginForm(forms.Form):
     #             'required': 'This field is required.',
     #         }
     #     }
+
+class ForgetPasswordForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Email',
+    }))
+
+
+class ChangePasswordForm(forms.Form):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+    }))
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password Again',
+    }))

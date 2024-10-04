@@ -1,0 +1,8 @@
+<h1>forget password</h1>
+<hr/>
+<p>
+    hi, please click on link blew for change your password:
+    <a href="http://127.0.0.1:8000/{% url 'reset_password' email_active_code=user.email_active_code %}">
+        change password
+    </a>
+</p>
